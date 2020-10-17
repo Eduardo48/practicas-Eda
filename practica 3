@@ -1,0 +1,64 @@
+//Arcos Carmona Eduardo Alberto
+#include <stdio.h>
+#include <stdlib.h>
+typedef struct atleta{
+    char nombre[40];
+    char pais[20];
+    int medallas;
+    }atleta;
+
+    void tabla(atleta *a[],int d);
+
+int main(){
+   atleta a[10],*b[10];
+   int i=1,d=0,z;
+   b[1]=&a[1];
+   do{
+       system("cls");
+       printf("Maximo 10 atletas\n");
+       printf("\tATLETA %d\n\tIngrese el nombre\n",i);
+       fflush(stdin);
+       gets(b[i]->nombre);
+       printf("\tIngrese el pais\n");
+       fflush(stdin);
+       gets(b[i]->pais);
+       printf("\tIngrese el numero de medallas\n");
+       scanf("%d",&b[i]->medallas);
+       fflush(stdin);
+       i++;
+       b[i]=&a[i];
+       d++;
+       if(i<11){
+           printf("\tSi queire ingresar otro atleta,escriba 1\t\tsi son todos los atletas escriba 2\n");
+           scanf("%d",&z);
+       }
+       else{
+           z=2;
+       }
+   }while(z==1);
+   system("cls");
+   if(d==10){
+printf("\t\tAlcanzo el numero maximo de atletas de poder ingresar\n");
+   }
+   tabla(b,d);
+   return 0;
+}
+
+void tabla(atleta *a[],int b){
+    int g,f,l=0;
+    printf("\t\tnombre\t\t\tpais\t\t\tcantidad de medallas\n");
+    for(g=1;g<=b;g++){
+        printf("Atleta %d\t%s\t\t%s\t\t\t%d\n\n",g,a[g]->nombre,a[g]->pais,a[g]->medallas);
+        if(a[g]->medallas>=l){
+            l=a[g]->medallas;
+            f=g;
+        }
+    }
+     printf("\tLos datos del atleta con la mayor cantidad de medallas son\n");
+    printf("\t\tnombre\t\t\tpais\t\t\tcantidad de medallas\n");
+     for(g=1;g<=b;g++){
+        if(l==a[g]->medallas){
+             printf("Atleta %d\t%s\t\t%s\t\t\t%d\n\n",g,a[g]->nombre,a[g]->pais,a[g]->medallas);
+        }
+    }
+}
